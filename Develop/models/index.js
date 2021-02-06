@@ -1,3 +1,3 @@
 module.exports = {
-  Post: require("./workout"),
+  Workout: require("./workoutModel"),
 };
