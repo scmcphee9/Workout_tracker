@@ -7,7 +7,7 @@ router.get("/api/workouts", (req, res) => {
       res.json(data);
     })
     .catch((err) => {
-      res.status(500).json(err);
+      res.status(400).json(err);
     });
 });
 
@@ -33,7 +33,7 @@ router.get("/api/workouts/range", (req, res) => {
 });
 
 router.post("/api/workouts/range", (req, res) => {
-  Workouts.create({})
+  Workouts.insertMany({})
     .then((workout) => {
       res.json(workout);
     })
