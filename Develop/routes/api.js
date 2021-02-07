@@ -1,28 +1,18 @@
 const router = require("express").Router();
-const { Workouts } = require("../models");
+const { Workout } = require("../models");
 
 router.get("/api/workouts", (req, res) => {
-  Workouts.find({})
+  Workout.find({})
     .then((data) => {
       res.json(data);
     })
     .catch((err) => {
-      res.status(400).json(err);
-    });
-});
-
-router.post("/api/workouts", (req, res) => {
-  Workouts.create({})
-    .then((workout) => {
-      res.json(workout);
-    })
-    .catch((err) => {
-      res.status(400).json(err);
+      res.status(500).json(err);
     });
 });
 
 router.get("/api/workouts/range", (req, res) => {
-  Workouts.find({})
+  Workout.find({})
     .sort({ day: -1 })
     .then((data) => {
       res.json(data);
@@ -32,18 +22,18 @@ router.get("/api/workouts/range", (req, res) => {
     });
 });
 
-router.post("/api/workouts/range", (req, res) => {
-  Workouts.insertMany({})
-    .then((workout) => {
-      res.json(workout);
+router.post("/api/workouts", ({ body }, res) => {
+  Workout.create(body)
+    .then((data) => {
+      res.json(data);
     })
     .catch((err) => {
       res.status(400).json(err);
     });
 });
 
-router.get("/api/workouts/:id", (req, res) => {
-  Workouts.findByIdandUpdate(
+router.put("/api/workouts/:id", (req, res) => {
+  Workout.findByIdAndUpdate(
     req.params.id,
     {
       $push: { exercises: req.body },
