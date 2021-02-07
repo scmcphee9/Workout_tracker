@@ -1,6 +1,6 @@
 # Fitness Tracker
 
-<img src = "./public/fitnessTracker.png" alt="fitness tracker Screenshot">
+<img src = "./Develop/public/fitnessTracker.png" alt="fitness tracker Screenshot">
 
 ## Project Description
 
